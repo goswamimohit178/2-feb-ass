@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <script>
+        var second=60;
+var minute=4;
+let running=true;
+
+var stopbtn=document.getElementById("stop_btn");
+var resumebtn=document.getElementById("resume_btn");
+var resetbtn=document.getElementById("resetbtn");
+
+
+
+var timer=setInterval(()=>{
+    second=second-1;
+    document.getElementById("seconds").innerText=second;
+    document.getElementById("minute").innerText=minute;
+    if(second==0){
+        second=60;
+        minute=minute-1;
+    }
+    if(minute<=0){
+        second=60;
+        minute=4;
+    }
+} ,1000);
+
+
+
+stop_btn.addEventListener("click",()=>{
+    clearInterval(timer);
+    running=false;
+});
+
+resume_btn.addEventListener("click", ()=>{
+    if(running==false)
+    {   running=true;
+        timer=setInterval(()=>{
+       
+        second=second-1;
+        document.getElementById("seconds").innerText=second;
+        document.getElementById("minute").innerText=minute;
+        if(second==0){
+            second=60;
+            minute=minute-1;
+        }
+        if(minute<0){
+            clearInterval(timer);
+        }
+    } ,1000);}
+});
+
+
+resetbtn.addEventListener("click", ()=>{
+sec=60;
+min=5;
+display()
+});
+    </script>
+    <div class="timer">
+        <div class="heading">
+             <h2>Timer</h2>
+        </div>
+        <div class="display">
+             <h1 id="minute">5</h1>
+             <p>m :: </p>
+             <h1 id="seconds">0</h1>
+             <p>  s</p>
+        </div>
+        <div class="pro"></div>
+        <div class="buttonsec">
+              <button id="stop_btn">Stop</button>
+              <button id="resume_btn">Resume</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
